@@ -9,7 +9,7 @@ interface Props {
 
 const Traffic = ({ url, description, region }: Props) => {
     const [timestamped, setTimestamped] = useState(url);
-    const { ref, inView, entry } = useInView({
+    const { ref, inView } = useInView({
         /* Optional options */
         threshold: 0,
     });
