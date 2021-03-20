@@ -14,16 +14,16 @@ const Traffic = ({ url, description, region }: Props) => {
         threshold: 0,
     });
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         if (inView) {
-    //             console.log(`refreshing ${url}`);
-    //             setTimestamped(`${url}?${Date.now()}`);
-    //         }
-    //     }, Math.random() * 50000 + 5000);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (inView) {
+                console.log(`refreshing ${url}`);
+                setTimestamped(`${url}?${Date.now()}`);
+            }
+        }, Math.random() * 50000 + 5000);
 
-    //     return () => clearInterval(interval);
-    // }, [url, inView]);
+        return () => clearInterval(interval);
+    }, [url, inView]);
 
     return (
         <div className="flex flex-col p-2 pb-6 w-80" ref={ref}>
