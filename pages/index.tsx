@@ -1,15 +1,20 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import { Content } from "@felipage/react-ui";
+import React from "react";
+import Traffic from "../components/Traffic";
+import locations from "../data/locations";
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+    <>
+        <Content>
+            <div className="mt-3">
+                <div className="flex flex-wrap items-start justify-center">
+                    {locations.map((location) => (
+                        <Traffic {...location} />
+                    ))}
+                </div>
+            </div>
+        </Content>
+    </>
+);
 
-export default IndexPage
+export default IndexPage;

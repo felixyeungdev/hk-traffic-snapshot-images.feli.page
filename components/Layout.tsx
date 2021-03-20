@@ -1,41 +1,31 @@
-import React, { ReactNode } from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
-
-type Props = {
-  children?: ReactNode
-  title?: string
+import React, { ReactNode } from "react";
+import { AppBar } from "@felipage/react-ui";
+import { MdTraffic } from "react-icons/md";
+interface Props {
+    children: ReactNode;
 }
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
-    <Head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
-      </nav>
-    </header>
-    {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
-  </div>
-)
+const Layout = ({ children }: Props) => {
+    return (
+        <>
+            <div className="fixed inset-x-0 top-0 min-h-56 md:min-h-64 opacity-95">
+                <AppBar title="Traffic Snapshots" Icon={MdTraffic} />
+            </div>
+            <div className="min-h-56 md:min-h-64"></div>
+            {children}
+            <footer className="flex justify-center py-16 mt-6 transform rotate-180 bg-white shadow-md dark:bg-black">
+                <div className="transform rotate-180">
+                    Images and data retrieved from{" "}
+                    <a
+                        href="https://data.gov.hk/en-data/dataset/hk-td-tis_2-traffic-snapshot-images"
+                        className="transition-colors hover:text-feli"
+                    >
+                        data.gov.hk
+                    </a>
+                </div>
+            </footer>
+        </>
+    );
+};
 
-export default Layout
+export default Layout;
